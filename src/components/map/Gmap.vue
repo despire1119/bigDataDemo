@@ -36,7 +36,6 @@ export default {
         mode: '3D'
       }
       this.qmap = new Gmap(bass)
-     
     },
     moveTo() {
       this.qmap.moveToPoint(116.319665, 39.855919)
