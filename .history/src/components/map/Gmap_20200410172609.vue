@@ -1,5 +1,5 @@
 <template>
-  <div class="map-room" @click="addmarker">
+  <div class="map-room" @dblclick="moveTo" @click="addmarker">
     <div id="container" style="height:100%;width:100%" tabindex="0" />
   </div>
 </template>
@@ -36,6 +36,7 @@ export default {
         mode: '3D'
       }
       this.qmap = new Gmap(bass)
+      this.qmap.createTrafficeLine()
     },
     moveTo() {
       this.qmap.moveToPoint(116.319665, 39.855919)

@@ -1,8 +1,8 @@
 import AMap from 'AMap'
 
 export default class Qmap {
-  constructor(config, viewMode) {
-    this._viewMode = viewMode || 'nom'
+  constructor(config,viewMode) {
+    this._viewMode=viewMode||'nom'
     this.map = new AMap.Map(config.id, {
       center: [config.x, config.y],
       resizeEnable: true,
@@ -12,14 +12,14 @@ export default class Qmap {
       viewMode: config.mode
     })
   }
-  set viewMode(val) {
+  set viewMode(val){
     this.changeView(val)
   }
-  get viewMode() {
+  get viewMode(){
     return this._viewMode
   }
-  changeView(val) {
-
+  changeView(val){
+    
   }
   addMarker(x, y) {
     const marker = new AMap.Marker({

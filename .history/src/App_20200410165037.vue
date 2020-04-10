@@ -25,6 +25,7 @@ export default {
   mounted() {
     this.autoSize()
 
+    
     window.onresize = () => {
       this.autoSize()
     }
