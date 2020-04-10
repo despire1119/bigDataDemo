@@ -22,10 +22,7 @@ export default class Qmap {
     const mybounds = new AMap.Bounds([x, y], [x, y])
     this.map.setBounds(mybounds)
   }
-  createTrafficeLine() {
-    const trafficLayer = new AMap.TileLayer.Traffic({
-      zIndex: 10
-    })
-    trafficLayer.setMap(this.map)
+  createTrafficeLine(){
+
   }
 }
