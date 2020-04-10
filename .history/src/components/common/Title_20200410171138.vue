@@ -16,8 +16,6 @@ export default {
   right: 0;
   left: 0;
   height: 11.22rem;
-  background: url('../../../public/images/bgtitle.png') no-repeat center center ;
-  background-size: 100% 100%;
-  z-index: 9999;
+  background: url('../../../public/images/bgtitle.png') no-repeat center center /cover;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="map-room" @click="addmarker">
+  <div class="map-room" @dblclick="moveTo" @click="addmarker">
     <div id="container" style="height:100%;width:100%" tabindex="0" />
   </div>
 </template>

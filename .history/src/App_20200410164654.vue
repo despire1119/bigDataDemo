@@ -24,7 +24,8 @@ export default {
   },
   mounted() {
     this.autoSize()
-
+    console.log(document.getElementsByTagName('html')[0].style);
+    
     window.onresize = () => {
       this.autoSize()
     }
