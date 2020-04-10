@@ -1,6 +1,6 @@
 <template>
   <div class="tit">
-    <div class="tit-inner"></div>
+    <div class="tit-inner" />
   </div>
 </template>
 
