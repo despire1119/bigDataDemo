@@ -43,7 +43,7 @@ export default class Qmap {
       subdistrict: 1,   //返回下一级行政区
       showbiz:false  //最后一级返回街道信息
   }
- const district = new AMap.DistrictSearch(opts);//注意：需要使用插件同步下发功能才能这样直接使用
+ const district = this.map.DistrictSearch(opts);//注意：需要使用插件同步下发功能才能这样直接使用
   district.search('中国', function(status, result) {
       if(status=='complete'){
           getData(result.districtList[0]);
