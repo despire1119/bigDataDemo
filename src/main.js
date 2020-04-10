@@ -4,8 +4,10 @@ import router from "./router";
 import store from "./store";
 import "@/assets/css/reset.less";
 
+import common from "@/mixins/common";
 Vue.config.productionTip = false;
 
+Vue.mixin(common);
 new Vue({
   router,
   store,

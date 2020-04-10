@@ -5,16 +5,16 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      winW: 22400,
-      winH: 6300,
-      rate: [1, 1]
-    };
-  },
   methods: {
     autoSize() {
-      this.rate = [window.innerWidth / 22400, window.innerHeight / 6300];
+      const [winW, winH] = [window.innerWidth, window.innerHeight];
+      this.$store.commit("setWindowHeight", winH);
+      this.$store.commit("setWindowWidth", winW);
+      const rate = [
+        this.WINDOW_WIDTH / this.CONFIG_WIDTH,
+        this.WINDOW_HEIGHT / this.CONFIG_HEIGHT
+      ];
+      this.$store.commit("setScreenRate", rate);
     }
   },
   mounted() {
@@ -25,7 +25,9 @@ export default {
   },
   computed: {
     baseSize() {
-      return `width:${this.winW}px;height:${this.winH}px;transform:scale(${this.rate[0]},${this.rate[1]})`;
+      return function(w = this.CONFIG_WIDTH, h = this.CONFIG_HEIGHT) {
+        return `width:${w}px;height:${h}px;transform:scale(${this.CONFIG_RATE[0]},${this.CONFIG_RATE[1]})`;
+      };
     }
   }
 };
