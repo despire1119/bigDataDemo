@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="baseSize">
+  <div id="app" :style="baseSize()">
     <router-view v-if="refresh" />
   </div>
 </template>

@@ -1,14 +1,17 @@
 <template>
   <div class="midScreen">
+    <Title />
     <MapRander />
   </div>
 </template>
 
 <script>
 import MapRander from '@/components/map/Gmap.vue'
+import Title from '@/components/common/Title'
 export default {
   components: {
-    MapRander
+    MapRander,
+    Title
   }
 }
 </script>
