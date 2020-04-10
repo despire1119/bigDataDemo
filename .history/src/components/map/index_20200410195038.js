@@ -46,7 +46,7 @@ export default class Qmap {
       const polygons = []
       if (bounds) {
         for (var i = 0, l = bounds.length; i < l; i++) {
-          // 生成行政区划polygon
+          //生成行政区划polygon
           const polygon = new AMap.Polygon({
             map: this.map,
             strokeWeight: 2,
@@ -64,27 +64,28 @@ export default class Qmap {
   }
   createMask() {
     this.districtSearch(this.searchCity, res => {
-      const outer = [
-        new AMap.LngLat(-360, 90, true),
-        new AMap.LngLat(-360, -90, true),
-        new AMap.LngLat(360, -90, true),
-        new AMap.LngLat(360, 90, true)
-      ]
-      const holes = res.districtList[0].boundaries
 
-      const pathArray = [
+      var outer = [
+        new AMap.LngLat(-360,90,true),
+        new AMap.LngLat(-360,-90,true),
+        new AMap.LngLat(360,-90,true),
+        new AMap.LngLat(360,90,true),
+    ];
+    var holes = res.districtList[0].boundaries
+
+    var pathArray = [
         outer
-      ]
-      pathArray.push.apply(pathArray, holes)
-      const polygon = new AMap.Polygon({
-        pathL: pathArray,
+    ];
+    pathArray.push.apply(pathArray,holes)
+    var polygon = new AMap.Polygon( {
+        pathL:pathArray,
         strokeColor: '#00eeff',
         strokeWeight: 1,
-        fillColor: '#161f47',
-        fillOpacity: '1'
-      })
-      polygon.setPath(pathArray)
-      this.map.add(polygon)
+        fillColor: '#71B3ff',
+        fillOpacity: 0.5
+    });
+    polygon.setPath(pathArray);
+    this.map.add(polygon)
     })
   }
   districtSearch(string, callback) {
