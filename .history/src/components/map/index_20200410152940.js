@@ -26,6 +26,6 @@ export default class Qmap {
     const trafficLayer = new AMap.TileLayer.Traffic({
       zIndex: 10
     })
-    trafficLayer.setMap(this.map)
+    trafficLayer.setMap(this.map);
   }
 }
