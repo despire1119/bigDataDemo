@@ -1,8 +1,8 @@
 export default {
   state: {
     ScreenRate: [1, 1],
-    configWidth: 22400,
-    configHeight: 6300,
+    configWidth: 11200,
+    configHeight: 3150,
     windowHeight: 0,
     windowWidth: 0
   },
