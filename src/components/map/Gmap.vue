@@ -15,15 +15,15 @@ export default {
   mounted() {
     this.init()
 
-    setInterval(() => {
-      const random = Math.random() * 0.005
-      const that = this
-      return (function(x) {
-        console.log(106.546331 + x)
-        that.qmap.addMarker(106.546331 + x, 29.558136 + x)
-        that.qmap.moveToPoint(106.546331 + x, 29.558136 + x)
-      })(random)
-    }, 3000)
+    // setInterval(() => {
+    //   const random = Math.random() * 0.005
+    //   const that = this
+    //   return (function(x) {
+    //     console.log(106.546331 + x)
+    //     that.qmap.addMarker(106.546331 + x, 29.558136 + x)
+    //     that.qmap.moveToPoint(106.546331 + x, 29.558136 + x)
+    //   })(random)
+    // }, 3000)
   },
   methods: {
     init() {
