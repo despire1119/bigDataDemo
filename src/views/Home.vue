@@ -23,7 +23,7 @@ export default {
     };
   },
   mounted() {
-    console.log(SCREEN_SET)
+    console.log(SCREEN_SET);
   },
   components: {
     screen,
@@ -35,7 +35,10 @@ export default {
 </script>
 <style lang="less">
 .home {
-  // width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
   height: 100%;
 }
 </style>

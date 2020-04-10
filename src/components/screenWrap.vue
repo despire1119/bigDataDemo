@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     screenStyle() {
-      return `width: ${this.baseW}%, height: 100%`;
+      return `width: ${this.baseW}%; height: 100%`;
     }
   }
 };
