@@ -36,7 +36,6 @@ export default {
         mode: '3D'
       }
       this.qmap = new Gmap(bass)
-       this.qmap.createTrafficeLine()
      
     },
     moveTo() {
