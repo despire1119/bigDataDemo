@@ -1,45 +1,36 @@
 <template>
   <div id="app" :style="baseSize">
-    <router-view v-if="refresh" />
+    <router-view />
   </div>
 </template>
 <script>
 export default {
-  data() {
-    return {
-      refresh: true
-    }
-  },
-  provide() {
-    return {
-      reload: this.reload
-    }
-  },
-  mounted() {
-    this.autoSize()
-    window.onresize = () => {
-      this.autoSize()
-    }
-  },
   methods: {
-    reload() {
-      this.refresh = false
-      this.$nextTick(() => {
-        this.refresh = true
-      })
-    },
     autoSize() {
-      const [winW, winH] = [window.innerWidth, window.innerHeight]
-      this.$store.commit('setWindowHeight', winH)
-      this.$store.commit('setWindowWidth', winW)
+      const [winW, winH] = [window.innerWidth, window.innerHeight];
+      this.$store.commit("setWindowHeight", winH);
+      this.$store.commit("setWindowWidth", winW);
       const rate = [
         this.WINDOW_WIDTH / this.CONFIG_WIDTH,
         this.WINDOW_HEIGHT / this.CONFIG_HEIGHT
-      ]
-      this.$store.commit('setScreenRate', rate)
+      ];
+      this.$store.commit("setScreenRate", rate);
+    }
+  },
+  mounted() {
+    this.autoSize();
+    window.onresize = () => {
+      this.autoSize();
+    };
+  },
+  computed: {
+    baseSize() {
+      return function(w = this.CONFIG_WIDTH, h = this.CONFIG_HEIGHT) {
+        return `width:${w}px;height:${h}px;transform:scale(${this.CONFIG_RATE[0]},${this.CONFIG_RATE[1]})`;
+      };
     }
   }
-}
+};
 </script>
 
 <style lang="less">

@@ -6,11 +6,12 @@
 
 <script>
 export default {
-  inject: ['reload'],
-  created() {
-    console.log('刷新了')
-  }
-}
+  inject: ["reload"],
+  created () {
+    console.log("刷新了");
+    
+  },
+};
 </script>
 
 <style lang="less" scoped>
