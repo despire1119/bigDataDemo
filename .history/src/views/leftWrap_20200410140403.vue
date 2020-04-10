@@ -7,9 +7,10 @@
 <script>
 export default {
   inject: ["reload"],
-  created() {
+  created () {
     console.log("刷新了");
-  }
+    
+  },
 };
 </script>
 

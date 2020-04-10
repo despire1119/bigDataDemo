@@ -1,20 +1,20 @@
 <template>
-  <div class="midScreen">
+  <div  class="midScreen">
     <MapRander></MapRander>
   </div>
 </template>
 
 <script>
-import MapRander from "@/components/map/Gmap.vue";
+import MapRander from '@/components/map/Gmap.vue'
 export default {
   components: {
-    MapRander
-  }
+    MapRander,
+  },
 };
 </script>
 
 <style lang="less" scoped>
-.midScreen {
+.midScreen{
   width: 100%;
   height: 100%;
   position: relative;

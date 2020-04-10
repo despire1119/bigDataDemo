@@ -1,6 +1,6 @@
 <template>
   <div id="app" :style="baseSize">
-    <router-view v-if="refresh" />
+    <router-view v-if="refresh"/>
   </div>
 </template>
 <script>
@@ -8,19 +8,19 @@ export default {
   data() {
     return {
       refresh: true
-    };
+    }
   },
-  provide() {
+  provide(){
     return {
-      reload: this.reload
-    };
+       reload: this.reload
+    }
   },
   methods: {
-    reload() {
-      this.refresh = false;
-      this.$nextTick(() => {
-        this.refresh = true;
-      });
+    reload(){
+      this.refresh=false
+      this.$nextTick(()=>{
+        this.refresh=true
+      })
     },
     autoSize() {
       const [winW, winH] = [window.innerWidth, window.innerHeight];

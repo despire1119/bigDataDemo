@@ -6,10 +6,7 @@
 
 <script>
 export default {
-  inject: ["reload"],
-  created() {
-    console.log("刷新了");
-  }
+  inject:['reload']
 };
 </script>
 

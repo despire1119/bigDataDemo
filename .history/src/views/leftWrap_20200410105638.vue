@@ -1,16 +1,11 @@
 <template>
-  <div class="left" @click="reload">
+  <div class="left">
     1
   </div>
 </template>
 
 <script>
-export default {
-  inject: ["reload"],
-  created() {
-    console.log("刷新了");
-  }
-};
+export default {};
 </script>
 
 <style lang="less" scoped>

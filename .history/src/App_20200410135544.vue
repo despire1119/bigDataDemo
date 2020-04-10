@@ -1,27 +1,11 @@
 <template>
   <div id="app" :style="baseSize">
-    <router-view v-if="refresh" />
+    <router-view />
   </div>
 </template>
 <script>
 export default {
-  data() {
-    return {
-      refresh: true
-    };
-  },
-  provide() {
-    return {
-      reload: this.reload
-    };
-  },
   methods: {
-    reload() {
-      this.refresh = false;
-      this.$nextTick(() => {
-        this.refresh = true;
-      });
-    },
     autoSize() {
       const [winW, winH] = [window.innerWidth, window.innerHeight];
       this.$store.commit("setWindowHeight", winH);
