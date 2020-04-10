@@ -8,18 +8,18 @@ export default {
   },
   mutations: {
     setScreenRate(state, status) {
-      state.ScreenRate = status;
+      state.ScreenRate = status
     },
     setWindowHeight(state, status) {
-      state.windowHeight = status;
+      state.windowHeight = status
     },
     setWindowWidth(state, status) {
-      state.windowWidth = status;
+      state.windowWidth = status
     }
   },
   actions: {
     GETBASS({ commit }, obj) {
-      commit("XXXX", obj);
+      commit('XXXX', obj)
     }
   }
-};
+}

@@ -1,20 +1,20 @@
 export const SCREEN_SET = [
   {
-    title: "left",
+    title: 'left',
     width: 25,
-    components: "leftWrap",
+    components: 'leftWrap',
     id: 0
   },
   {
-    title: "middle",
+    title: 'middle',
     width: 50,
-    components: "middleWrap",
+    components: 'middleWrap',
     id: 1
   },
   {
-    title: "right",
+    title: 'right',
     width: 25,
-    components: "rightWrap",
+    components: 'rightWrap',
     id: 2
   }
-];
+]

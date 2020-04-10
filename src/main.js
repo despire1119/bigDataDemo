@@ -1,15 +1,15 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import "@/assets/css/reset.less";
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import '@/assets/css/reset.less'
 
-import common from "@/mixins/common";
-Vue.config.productionTip = false;
+import common from '@/mixins/common'
+Vue.config.productionTip = false
 
-Vue.mixin(common);
+Vue.mixin(common)
 new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount("#app");
+}).$mount('#app')

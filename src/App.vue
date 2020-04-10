@@ -5,32 +5,32 @@
 </template>
 <script>
 export default {
-  methods: {
-    autoSize() {
-      const [winW, winH] = [window.innerWidth, window.innerHeight];
-      this.$store.commit("setWindowHeight", winH);
-      this.$store.commit("setWindowWidth", winW);
-      const rate = [
-        this.WINDOW_WIDTH / this.CONFIG_WIDTH,
-        this.WINDOW_HEIGHT / this.CONFIG_HEIGHT
-      ];
-      this.$store.commit("setScreenRate", rate);
-    }
-  },
-  mounted() {
-    this.autoSize();
-    window.onresize = () => {
-      this.autoSize();
-    };
-  },
   computed: {
     baseSize() {
       return function(w = this.CONFIG_WIDTH, h = this.CONFIG_HEIGHT) {
-        return `width:${w}px;height:${h}px;transform:scale(${this.CONFIG_RATE[0]},${this.CONFIG_RATE[1]})`;
-      };
+        return `width:${w}px;height:${h}px;transform:scale(${this.CONFIG_RATE[0]},${this.CONFIG_RATE[1]})`
+      }
+    }
+  },
+  mounted() {
+    this.autoSize()
+    window.onresize = () => {
+      this.autoSize()
+    }
+  },
+  methods: {
+    autoSize() {
+      const [winW, winH] = [window.innerWidth, window.innerHeight]
+      this.$store.commit('setWindowHeight', winH)
+      this.$store.commit('setWindowWidth', winW)
+      const rate = [
+        this.WINDOW_WIDTH / this.CONFIG_WIDTH,
+        this.WINDOW_HEIGHT / this.CONFIG_HEIGHT
+      ]
+      this.$store.commit('setScreenRate', rate)
     }
   }
-};
+}
 </script>
 
 <style lang="less">

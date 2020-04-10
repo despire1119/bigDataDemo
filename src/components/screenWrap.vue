@@ -1,6 +1,6 @@
 <template>
   <div :style="screenStyle">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
@@ -14,10 +14,10 @@ export default {
   },
   computed: {
     screenStyle() {
-      return `width: ${this.baseW}%; height: 100%`;
+      return `width: ${this.baseW}%; height: 100%`
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped></style>

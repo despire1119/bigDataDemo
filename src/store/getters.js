@@ -4,5 +4,5 @@ const getters = {
   getConfigHeight: state => state.ScreenGlobal.configHeight,
   getWindowHeight: state => state.ScreenGlobal.windowHeight,
   getWindowWidth: state => state.ScreenGlobal.windowWidth
-};
-export default getters;
+}
+export default getters

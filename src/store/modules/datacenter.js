@@ -8,25 +8,25 @@ export default {
   },
   mutations: {
     setRoomData(state, status) {
-      state.roomData = status;
+      state.roomData = status
     },
     setTop5Data(state, status) {
-      state.top5Data = status;
+      state.top5Data = status
     },
     setRealtimeData(state, status) {
-      state.realtimeData = status;
+      state.realtimeData = status
     },
     setRoomVedioData(state, status) {
-      state.roomVedioData = status;
+      state.roomVedioData = status
     },
     setTodayAlarmData(state, status) {
-      state.todayAlarmData = status;
+      state.todayAlarmData = status
     }
   },
   actions: {
     GETBASS({ commit }, obj) {
       // TODO:setData
-      commit("XXXX", obj);
+      commit('XXXX', obj)
     }
   }
-};
+}
