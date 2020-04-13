@@ -1,4 +1,5 @@
 import AMap from 'AMap'
+
 export default class Qmap {
   constructor(config, viewMode) {
     this._viewMode = viewMode || 'nom'
@@ -15,11 +16,9 @@ export default class Qmap {
   set viewMode(val) {
     this.changeView(val)
   }
-
   get viewMode() {
     return this._viewMode
   }
-
   changeView(val) {
     this._viewMode = val
   }
@@ -59,14 +58,12 @@ export default class Qmap {
           })
           polygons.push(polygon)
         }
+        // 地图自适应
+        this.map.setFitView()
       }
     })
   }
-  mapAutoSize() {
-    // 地图自适应
-    this.map.setFitView()
-  }
-  createSubArea(area, config = { map: this.map, strokeWeight: 2, fillOpacity: 0, fillColor: '#CCF3FF', strokeColor: '#73c4fb' }) {
+  createSubArea(area, config = { map: this.map, strokeWeight: 2, path: bounds[i], fillOpacity: 0, fillColor: '#CCF3FF', strokeColor: '#73c4fb' }) {
     this.districtSearch(area, res => {
       const bounds = res.districtList[0].boundaries
       const polygons = []

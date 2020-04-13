@@ -1,6 +1,6 @@
 <template>
   <div class="map-room" @click="addmarker">
-    <map-tool @change="changeMapView" />
+    <map-tool @change="changeMapView"/>
     <div id="container" style="height:100%;width:100%" tabindex="0" />
   </div>
 </template>
@@ -10,56 +10,17 @@ import Gmap from './index'
 import MapTool from './mapTool'
 export default {
   components: {
-    MapTool
+    MapTool,
   },
   data() {
     return {
       qmap: {},
-      viewMode: 'allView',
-      modeList: [
-        {
-          mod: 'allView',
-          bassConfig: {
-            id: 'container',
-            x: 118.792199,
-            y: 32.050678,
-            zoom: 17,
-            pitch: 65,
-            mode: '2D'
-          }
-        },
-        {
-          mod: 'midView',
-          bassConfig: {
-            id: 'container',
-            x: 118.792199,
-            y: 32.050678,
-            zoom: 25,
-            pitch: 65,
-            mode: '3D'
-          }
-        },
-        {
-          mod: 'smallView',
-          bassConfig: {
-            id: 'container',
-            x: 118.792199,
-            y: 32.050678,
-            zoom: 17,
-            pitch: 65,
-            mode: '3D'
-          }
-        }
-      ]
-    }
-  },
-  watch: {
-    viewMode(newValue) {
-      this.init()
+      viewMode:'all'
     }
   },
   mounted() {
     this.init()
+
     // setInterval(() => {
     //   const random = Math.random() * 0.005
     //   const that = this
@@ -72,22 +33,22 @@ export default {
   },
   methods: {
     init() {
-      const bass = this.modeList.find(mod => mod.mod === this.viewMode).bassConfig
+      const bass = {
+        id: 'container',
+        x: 118.792199,
+        y: 32.050678,
+        zoom: 17,
+        pitch: 65,
+        mode: '3D'
+      }
       this.qmap = new Gmap(bass)
       this.qmap.createTrafficeLine()
       this.qmap.createArea()
       this.qmap.createMask()
-      switch (this.viewMode) {
-        case 'alllView':
-          this.qmap.mapAutoSize()
-          break
-
-        default:
-          break
-      }
+    //   this.qmap.createSubArea('六合区')
     },
-    changeMapView(type) {
-      this.viewMode = type
+    changeMapView(type){
+
     },
     moveTo() {
       this.qmap.moveToPoint(116.319665, 39.855919)

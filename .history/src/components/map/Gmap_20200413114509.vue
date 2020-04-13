@@ -77,14 +77,7 @@ export default {
       this.qmap.createTrafficeLine()
       this.qmap.createArea()
       this.qmap.createMask()
-      switch (this.viewMode) {
-        case 'alllView':
-          this.qmap.mapAutoSize()
-          break
-
-        default:
-          break
-      }
+   
     },
     changeMapView(type) {
       this.viewMode = type
