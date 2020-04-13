@@ -1,4 +1,6 @@
 import AMap from 'AMap'
+import Loca from 'Loca'
+
 export default class Qmap {
   constructor(config, viewMode) {
     this._viewMode = viewMode || 'nom'
@@ -118,6 +120,23 @@ export default class Qmap {
       district.search(string, (status, result) => {
         callback && typeof callback === 'function' && callback(result)
       })
+    })
+  }
+  heatMap(data) {
+    this.map.on('complete', () => {
+      const layer = new Loca.HeatmapLayer({
+        map: this.map
+      })
+      layer.setData(data, {
+        lnglat: 'lnglat'
+      })
+      layer.setOptions({
+        style: {
+          radius: 30,
+          opacity: [0.1, 0.8]
+        }
+      })
+      layer.render()
     })
   }
 }

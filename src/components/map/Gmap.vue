@@ -8,6 +8,8 @@
 <script>
 import Gmap from './index'
 import MapTool from './mapTool'
+import { heatmapData } from '@/mockData/heatmapData'
+
 export default {
   components: {
     MapTool
@@ -53,6 +55,16 @@ export default {
       ]
     }
   },
+  computed: {
+    heatData() {
+      return heatmapData.map(item => {
+        return {
+          lnglat: [item.lng + 2.4, item.lat - 7.9],
+          value: item.count
+        }
+      })
+    }
+  },
   watch: {
     viewMode(newValue) {
       this.init()
@@ -77,6 +89,7 @@ export default {
       this.qmap.createTrafficeLine()
       this.qmap.createArea()
       this.qmap.createMask()
+      this.qmap.heatMap(this.heatData)
       switch (this.viewMode) {
         case 'alllView':
           this.qmap.mapAutoSize()
