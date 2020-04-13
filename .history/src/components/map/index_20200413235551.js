@@ -154,12 +154,13 @@ export default class Qmap {
   removeInfoWindow(infoWindow) {
     infoWindow.close()
   }
-  createHotArea(config, lnglat) {
+  createHotArea(config,lnglat){
     const path = []
-    for (const [index, point] of lnglat.entries()) {
-      path.push(new AMap.LngLat(point.lng, point.lat))
+    for (let [index,point] of lnglat.entries()) {
+      debug
+      path.push(new AMap.LngLat(point.lng, point.lat))    
     }
-    const { strokeWeight, strokeColor, strokeOpacity, fillColor, fillOpacity } = config
+    const {strokeWeight,strokeColor,strokeOpacity,fillColor,fillOpacity} =config
     const polygon = new AMap.Polygon({
       path: path,
       strokeColor,
@@ -168,8 +169,9 @@ export default class Qmap {
       fillOpacity,
       strokeOpacity
     })
-
+    polygon.setPath(pathArray)
     this.map.add(polygon)
   }
 }
+
 

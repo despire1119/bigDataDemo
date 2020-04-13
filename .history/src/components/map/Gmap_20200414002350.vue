@@ -10,8 +10,7 @@
 import Gmap from './index'
 import MapTool from './mapTool'
 import weather from './weather'
-import { Polygon } from './config/hotar'
-import { Point } from "./config/point";
+import { Polygon } from "./config/hotar"
 export default {
   components: {
     MapTool, weather
@@ -64,6 +63,13 @@ export default {
   },
   mounted() {
     this.init()
+    this.qmap.on('complete', function(){
+		this.qmap.plugin(["AMap.ToolBar", "AMap.OverView", "AMap.Scale"], function(){
+		this.qmap.addControl(new AMap.ToolBar);
+		this.qmap.addControl(new AMap.OverView({isOpen: true}));
+	  this.qmap.addControl(new AMap.Scale);
+			});	
+		})
   },
   methods: {
     init() {
@@ -82,18 +88,16 @@ export default {
           break
       }
     },
-    addHotArea() {
-      Polygon.forEach((pol, i) => {
-        this.qmap.createHotArea(pol.config, pol.lnglat)
+    addHotArea(){
+      Polygon.forEach((pol,i )=> {
+        debugger
+        this.qmap.createHotArea(pol.config,pol.lnglat)
       })
-    },  
-    addLight(){
-
     },
     moveTo() {
       this.qmap.moveToPoint(116.319665, 39.855919)
-    }
-
+    },
+  
   }
 }
 </script>

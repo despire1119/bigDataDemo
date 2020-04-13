@@ -156,7 +156,7 @@ export default class Qmap {
   }
   createHotArea(config, lnglat) {
     const path = []
-    for (const [index, point] of lnglat.entries()) {
+    for (const [index, point] of lnglat.entries()) {      
       path.push(new AMap.LngLat(point.lng, point.lat))
     }
     const { strokeWeight, strokeColor, strokeOpacity, fillColor, fillOpacity } = config
