@@ -9,6 +9,7 @@
 <script>
 import Gmap from './index'
 import MapTool from './mapTool'
+import { heatmapData } from '@/mockData/heatmapData'
 import weather from './weather'
 import { Polygon } from './config/hotar'
 import { Point } from './config/point'
@@ -59,6 +60,16 @@ export default {
       ]
     }
   },
+  computed: {
+    heatData() {
+      return heatmapData.map(item => {
+        return {
+          lnglat: [item.lng + 2.4, item.lat - 7.9],
+          value: item.count
+        }
+      })
+    }
+  },
   watch: {
     viewMode(newValue) {
       this.init()
@@ -106,6 +117,7 @@ export default {
       this.qmap.createMask()
       this.addHotArea()
       this.addLight()
+      this.qmap.heatMap(this.heatData)
       switch (this.viewMode) {
         case 'alllView':
           this.qmap.mapAutoSize()
@@ -114,35 +126,6 @@ export default {
         default:
           break
       }
-    },
-    addHotArea() {
-      Polygon.forEach((pol, i) => {
-        this.qmap.createHotArea(pol.config, pol.lnglat)
-      })
-    },
-    addLight() {
-      const arr = []
-      Point.forEach((point, i) => {
-        const icon = this.qmap.createIcon(
-          '../images/ico_map_tunnel.png', 100, 50
-        )
-        const real = this.qmap.addMarker(
-          +point.loc[0],
-          +point.loc[1],
-          99999,
-          icon,
-          {
-            kind: point.type,
-            locId: `${point.loc[0]}${point.loc[1]}`,
-            title: point.name,
-            loc: point.loc,
-            info: point.info
-          }
-        )
-
-        arr.push(real)
-      })
-      this.realPoint = arr
     },
     moveTo() {
       this.qmap.moveToPoint(116.319665, 39.855919)

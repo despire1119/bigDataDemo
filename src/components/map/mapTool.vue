@@ -31,6 +31,10 @@ export default {
         {
           name: 'smallView',
           title: '细节视图'
+        },
+        {
+          name: 'video',
+          title: '建模视图'
         }
       ]
     }
