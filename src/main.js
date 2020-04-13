@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueBus from 'vue-bus'
 import './plugins/axios'
 import App from './App.vue'
 import router from './router'
@@ -8,6 +9,7 @@ import { getStyle } from '@/utils/util'
 import common from '@/mixins/common'
 Vue.config.productionTip = false
 
+Vue.use(VueBus)
 Vue.mixin(common)
 new Vue({
   router,

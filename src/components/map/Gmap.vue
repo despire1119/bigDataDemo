@@ -1,6 +1,7 @@
 <template>
   <div class="map-room" @click="addmarker">
     <map-tool @change="changeMapView" />
+    <!-- <map-tool></map-tool> -->
     <div id="container" style="height:100%;width:100%" tabindex="0" />
   </div>
 </template>
@@ -100,7 +101,11 @@ export default {
       }
     },
     changeMapView(type) {
-      this.viewMode = type
+      if (type === 'video') {
+        console.log('弹窗')
+      } else {
+        this.viewMode = type
+      }
     },
     moveTo() {
       this.qmap.moveToPoint(116.319665, 39.855919)

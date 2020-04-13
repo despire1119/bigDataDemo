@@ -1,6 +1,6 @@
 <template>
   <div class="video">
-    <video src="@/assets/video/trafficModel.mp4" autoplay="autoplay" />
+    <video src="@/assets/video/trafficModel.mp4" autoplay="autoplay" loop="loop" />
   </div>
 </template>
 
@@ -17,5 +17,9 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
+}
+video {
+  width: 100%;
+  height: 100%;
 }
 </style>
