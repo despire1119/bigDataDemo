@@ -46,6 +46,7 @@ export default {
   background-size: contain;
   background-repeat: no-repeat;
   transform: translate(0, 85%);
+  transition: all 0.2s cubic-bezier(0.18, 1.1, 0.51, 1.29);
   li{
     display: flex;
     justify-content: center;
@@ -62,7 +63,8 @@ export default {
     }
   }
   &:hover{
-     animation:slideUp 0.2s linear 0s 1 forwards;
+    transform: translate(0, 0);
+    //  animation:slideUp 0.2s linear 0s 1 forwards;
   }
 }
 </style>
