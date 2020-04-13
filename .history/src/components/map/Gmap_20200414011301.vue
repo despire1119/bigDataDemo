@@ -11,17 +11,16 @@ import Gmap from './index'
 import MapTool from './mapTool'
 import weather from './weather'
 import { Polygon } from './config/hotar'
-import { Point } from './config/point'
+import { Point } from "./config/point";
 export default {
   components: {
-    MapTool,
-    weather
+    MapTool, weather
   },
   data() {
     return {
       qmap: {},
       viewMode: 'midView',
-      realPoint: [],
+      realPoint:[],
       modeList: [
         {
           mod: 'allView',
@@ -63,7 +62,7 @@ export default {
     viewMode(newValue) {
       this.init()
     },
-    realPoint(newValue, oldValue) {
+     realPoint(newValue, oldValue) {
       this.bind()
     }
   },
@@ -72,7 +71,7 @@ export default {
     this.init()
   },
   methods: {
-    bind() {
+        bind() {
       console.log(this.realPoint)
       this.realPoint.forEach(p => {
         p.on('click', () => {
@@ -83,13 +82,13 @@ export default {
         })
       })
     },
-    pMouseover(p) {
+     pMouseover(p) {
       console.log(p)
-      const ctx = `<div style=\"padding:7px 0px 0px 0px;\"><h4>${p.De.title}</h4>`
-      this.qmap.openInfo(ctx, p.De.loc[0], p.De.loc[1])
+      const ctx = `<div style=\"padding:7px 0px 0px 0px;\"><h4>${p.Je.title}</h4>`
+      this.qmap.openInfo(ctx, p.Je.loc[0], p.Je.loc[1])
     },
     pClick(p) {
-      console.log(p, '击中')
+      console.log(p)
       // const kindStr = this.lengend.find(n => n.kind === p.Je.kind).title
       // this.dialogInfor = {
       //   title: `${p.Je.title}-${kindStr}`,
@@ -98,8 +97,7 @@ export default {
       // this.showDialog = true
     },
     init() {
-      const bass = this.modeList.find(mod => mod.mod === this.viewMode)
-        .bassConfig
+      const bass = this.modeList.find(mod => mod.mod === this.viewMode).bassConfig
       this.qmap = new Gmap(bass)
       this.qmap.createTrafficeLine()
       this.qmap.createArea()
@@ -119,34 +117,33 @@ export default {
       Polygon.forEach((pol, i) => {
         this.qmap.createHotArea(pol.config, pol.lnglat)
       })
-    },
-    addLight() {
-      const arr = []
-      Point.forEach((point, i) => {
-        const icon = this.qmap.createIcon(
-          '../images/ico_map_tunnel.png', 100, 50
-        )
-        const real = this.qmap.addMarker(
-          +point.loc[0],
-          +point.loc[1],
-          99999,
-          icon,
-          {
-            kind: point.type,
-            locId: `${point.loc[0]}${point.loc[1]}`,
-            title: point.name,
-            loc: point.loc,
-            info: point.info
-          }
-        )
+    },  
+    addLight(){
+      const arr=[]
+      Point.forEach((p,i)=>{
+        const icon=this.qmap.createIcon('../../../public/imgaes/ico_map_tunnel.png')
+  const real = this.qmap.addMarker(
+            +point.loc[0],
+            +point.loc[1],
+            99999,
+            icon,
+            {
+              kind: point.type,
+              locId: `${point.loc[0]}${point.loc[1]}`,
+              title: point.name,
+              loc: point.loc,
+              info:point.info
+            }
+          )
 
-        arr.push(real)
+          arr.push(real)
       })
-      this.realPoint = arr
+      this.realPoint=arr
     },
     moveTo() {
       this.qmap.moveToPoint(116.319665, 39.855919)
     }
+
   }
 }
 </script>

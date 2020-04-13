@@ -24,7 +24,7 @@ export default class Qmap {
   changeView(val) {
     this._viewMode = val
   }
-  createIcon(imgUrl, imgSizeX = 27, imgSizeY = 27, size = 27) {
+  createIcon(imgUrl, imgSizeX = 27, imgSizeY = 27,size = 27) {
     const vsize = new AMap.Size(imgSizeX, imgSizeY)
     return new AMap.Icon({
       image: imgUrl,

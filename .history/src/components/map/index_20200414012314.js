@@ -2,7 +2,7 @@ import AMap from 'AMap'
 export default class Qmap {
   constructor(config, viewMode) {
     this._viewMode = viewMode || 'nom'
-    this.realpoint = []
+    this.realpoint=[]
     this.map = new AMap.Map(config.id, {
       center: [config.x, config.y],
       resizeEnable: true,
@@ -24,8 +24,8 @@ export default class Qmap {
   changeView(val) {
     this._viewMode = val
   }
-  createIcon(imgUrl, imgSizeX = 27, imgSizeY = 27, size = 27) {
-    const vsize = new AMap.Size(imgSizeX, imgSizeY)
+  createIcon(imgUrl, imgSize = 27, size = 27) {
+    const vsize = new AMap.Size(imgSize, imgSize)
     return new AMap.Icon({
       image: imgUrl,
       imgSize: vsize,

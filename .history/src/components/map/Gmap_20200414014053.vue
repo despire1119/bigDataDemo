@@ -124,7 +124,7 @@ export default {
       const arr = []
       Point.forEach((point, i) => {
         const icon = this.qmap.createIcon(
-          '../images/ico_map_tunnel.png', 100, 50
+          '../images/ico_map_tunnel.png',100,50
         )
         const real = this.qmap.addMarker(
           +point.loc[0],

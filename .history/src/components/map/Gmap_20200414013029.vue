@@ -89,13 +89,14 @@ export default {
       this.qmap.openInfo(ctx, p.De.loc[0], p.De.loc[1])
     },
     pClick(p) {
-      console.log(p, '击中')
+      console.log(p,"击中")
       // const kindStr = this.lengend.find(n => n.kind === p.Je.kind).title
       // this.dialogInfor = {
       //   title: `${p.Je.title}-${kindStr}`,
       //   url: p.Je.url
       // }
       // this.showDialog = true
+
     },
     init() {
       const bass = this.modeList.find(mod => mod.mod === this.viewMode)
@@ -124,7 +125,7 @@ export default {
       const arr = []
       Point.forEach((point, i) => {
         const icon = this.qmap.createIcon(
-          '../images/ico_map_tunnel.png', 100, 50
+          '../images/ico_map_tunnel.png'
         )
         const real = this.qmap.addMarker(
           +point.loc[0],

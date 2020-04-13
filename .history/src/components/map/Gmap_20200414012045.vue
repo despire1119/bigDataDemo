@@ -85,11 +85,11 @@ export default {
     },
     pMouseover(p) {
       console.log(p)
-      const ctx = `<div style=\"padding:7px 0px 0px 0px;\"><h4>${p.De.title}</h4>`
-      this.qmap.openInfo(ctx, p.De.loc[0], p.De.loc[1])
+      const ctx = `<div style=\"padding:7px 0px 0px 0px;\"><h4>${p.Je.title}</h4>`
+      this.qmap.openInfo(ctx, p.Je.loc[0], p.Je.loc[1])
     },
     pClick(p) {
-      console.log(p, '击中')
+      console.log(p)
       // const kindStr = this.lengend.find(n => n.kind === p.Je.kind).title
       // this.dialogInfor = {
       //   title: `${p.Je.title}-${kindStr}`,
@@ -124,7 +124,7 @@ export default {
       const arr = []
       Point.forEach((point, i) => {
         const icon = this.qmap.createIcon(
-          '../images/ico_map_tunnel.png', 100, 50
+          '../../../public/imgaes/ico_map_tunnel.png'
         )
         const real = this.qmap.addMarker(
           +point.loc[0],
