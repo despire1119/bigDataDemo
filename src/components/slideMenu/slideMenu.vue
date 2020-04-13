@@ -1,7 +1,7 @@
 <template>
   <ol class="slide-menu">
     <li v-for="(m,i) in menu" :key="i" @click="checkMenu(m)">
-      <img :src="m.url" :alt="m.title">
+      <img :src="m.url" :alt="m.title" :title="m.title">
     </li>
   </ol>
 </template>
