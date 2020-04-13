@@ -1,7 +1,9 @@
 <template>
-  <div class="slide-menu">
-    <ol v-for="(m,i) in menu" :key="i" :style="style" @click="checkMenu(m)">{{ m.title }}</ol>
-  </div>
+  <ol class="slide-menu">
+    <li v-for="(m,i) in menu" :key="i" @click="checkMenu(m)">
+      <img :src="m.url" :alt="m.title">
+    </li>
+  </ol>
 </template>
 
 <script>
@@ -12,11 +14,11 @@ export default {
       default: () => []
     }
   },
-  computed: {
-    style() {
-      return `width:${100 / this.menu.length}%;height:100%`
-    }
-  },
+  // computed: {
+  //   style() {
+  //     return `width:${100 / this.menu.length}%;height:100%`
+  //   }
+  // },
   methods: {
     checkMenu(m) {
       this.$router.push({ path: `${m.path}` })
@@ -29,26 +31,38 @@ export default {
 <style lang="less" scoped>
 .slide-menu{
   cursor: pointer;
-  width: 100rem;
-  height: 10rem;
-  border-radius: 1rem;
-  background: rgba(2, 24, 38, 0.8);
+  width: 56.33rem;
+  height: 7.13rem;
+  margin-left: -28.16rem;
   position: absolute;
-  top: 0rem;
+  left: 50%;
+  bottom: 0rem;
   z-index: 99999;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  transform: translate(0,-98%);
-  ol{
-  //  background: coral;
+  background-image: url('../../../public/images/menu_bg.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translate(0, 85%);
+  li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     color: white;
     line-height: 10rem;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 1.8rem;
+    img{
+      width: auto;
+      height: 3.5rem;
+    }
   }
   &:hover{
-     animation:slideDown 0.2s linear 0s 1 forwards;
+     animation:slideUp 0.2s linear 0s 1 forwards;
   }
 }
 </style>
