@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       qmap: {},
-      viewMode: 'allView',
+      viewMode: 'all',
       modeList: [
         {
           mod: 'allView',
@@ -25,7 +25,7 @@ export default {
             y: 32.050678,
             zoom: 17,
             pitch: 65,
-            mode: '2D'
+            mode: '3D'
           }
         },
         {
@@ -34,7 +34,7 @@ export default {
             id: 'container',
             x: 118.792199,
             y: 32.050678,
-            zoom: 25,
+            zoom: 17,
             pitch: 65,
             mode: '3D'
           }
@@ -53,13 +53,9 @@ export default {
       ]
     }
   },
-  watch: {
-    viewMode(newValue) {
-      this.init()
-    }
-  },
   mounted() {
     this.init()
+
     // setInterval(() => {
     //   const random = Math.random() * 0.005
     //   const that = this
@@ -72,19 +68,19 @@ export default {
   },
   methods: {
     init() {
-      const bass = this.modeList.find(mod => mod.mod === this.viewMode).bassConfig
+      const bass = {
+        id: 'container',
+        x: 118.792199,
+        y: 32.050678,
+        zoom: 17,
+        pitch: 65,
+        mode: '3D'
+      }
       this.qmap = new Gmap(bass)
       this.qmap.createTrafficeLine()
       this.qmap.createArea()
       this.qmap.createMask()
-      switch (this.viewMode) {
-        case 'alllView':
-          this.qmap.mapAutoSize()
-          break
-
-        default:
-          break
-      }
+      //   this.qmap.createSubArea('六合区')
     },
     changeMapView(type) {
       this.viewMode = type

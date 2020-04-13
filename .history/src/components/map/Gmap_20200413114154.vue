@@ -71,20 +71,13 @@ export default {
     // }, 3000)
   },
   methods: {
-    init() {
-      const bass = this.modeList.find(mod => mod.mod === this.viewMode).bassConfig
+    init() {    
+      const bass = this.modeList.find(mod=> mod.mod === this.viewMode).bassConfig
       this.qmap = new Gmap(bass)
       this.qmap.createTrafficeLine()
       this.qmap.createArea()
       this.qmap.createMask()
-      switch (this.viewMode) {
-        case 'alllView':
-          this.qmap.mapAutoSize()
-          break
-
-        default:
-          break
-      }
+      //   this.qmap.createSubArea('六合区')
     },
     changeMapView(type) {
       this.viewMode = type

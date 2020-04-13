@@ -1,6 +1,11 @@
 import AMap from 'AMap'
+function unenumerable(target,name,district) {
+  district.enumerable=false
+  return district
+}  
 export default class Qmap {
   constructor(config, viewMode) {
+    
     this._viewMode = viewMode || 'nom'
     this.map = new AMap.Map(config.id, {
       center: [config.x, config.y],
@@ -15,7 +20,7 @@ export default class Qmap {
   set viewMode(val) {
     this.changeView(val)
   }
-
+  
   get viewMode() {
     return this._viewMode
   }
@@ -59,12 +64,13 @@ export default class Qmap {
           })
           polygons.push(polygon)
         }
+  
       }
     })
   }
-  mapAutoSize() {
-    // 地图自适应
-    this.map.setFitView()
+  mapAutoSize(){
+          // 地图自适应
+       this.map.setFitView()
   }
   createSubArea(area, config = { map: this.map, strokeWeight: 2, fillOpacity: 0, fillColor: '#CCF3FF', strokeColor: '#73c4fb' }) {
     this.districtSearch(area, res => {

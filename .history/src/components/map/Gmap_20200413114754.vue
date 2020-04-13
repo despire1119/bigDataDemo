@@ -80,11 +80,12 @@ export default {
       switch (this.viewMode) {
         case 'alllView':
           this.qmap.mapAutoSize()
-          break
-
+          break;
+      
         default:
-          break
+          break;
       }
+   
     },
     changeMapView(type) {
       this.viewMode = type
