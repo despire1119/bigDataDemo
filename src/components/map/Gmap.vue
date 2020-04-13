@@ -99,7 +99,7 @@ export default {
       this.qmap.openInfo(ctx, p.De.loc[0], p.De.loc[1])
     },
     pClick(p) {
-      console.log(p, '»÷ÖÐ')
+      console.log(p, 'å‡»ä¸­')
       // const kindStr = this.lengend.find(n => n.kind === p.Je.kind).title
       // this.dialogInfor = {
       //   title: `${p.Je.title}-${kindStr}`,
@@ -113,6 +113,8 @@ export default {
       this.qmap.createTrafficeLine()
       this.qmap.createArea()
       this.qmap.createMask()
+      this.addHotArea()
+      this.addLight()
       this.qmap.heatMap(this.heatData)
       switch (this.viewMode) {
         case 'alllView':
@@ -122,6 +124,35 @@ export default {
         default:
           break
       }
+    },
+    addHotArea() {
+      Polygon.forEach((pol, i) => {
+        this.qmap.createHotArea(pol.config, pol.lnglat)
+      })
+    },
+    addLight() {
+      const arr = []
+      Point.forEach((point, i) => {
+        const icon = this.qmap.createIcon(
+          '../images/ico_map_tunnel.png', 100, 50
+        )
+        const real = this.qmap.addMarker(
+          +point.loc[0],
+          +point.loc[1],
+          99999,
+          icon,
+          {
+            kind: point.type,
+            locId: `${point.loc[0]}${point.loc[1]}`,
+            title: point.name,
+            loc: point.loc,
+            info: point.info
+          }
+        )
+
+        arr.push(real)
+      })
+      this.realPoint = arr
     },
     moveTo() {
       this.qmap.moveToPoint(116.319665, 39.855919)
