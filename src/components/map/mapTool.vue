@@ -1,11 +1,22 @@
 <template>
   <div class="map-tool">
-    <ol v-for="tool in tools" :key="tool.name" :style="toolStyle" @click.stop="checkView(tool.name)">{{ tool.title }}</ol>
+    <ol
+      v-for="tool in tools"
+      :key="tool.name"
+      :style="toolStyle(tool)"
+      @click.stop="checkView(tool.name)"
+    />
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    mapMod: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
     return {
       tools: [
@@ -26,38 +37,58 @@ export default {
   },
   computed: {
     toolStyle() {
-      return `width:${100 / this.tools.length}%;height:100%`
+      return function(item) {
+        return `width:${100 /
+          this.tools.length}%;height:100%;background: url('../images/${
+          item.name
+        }.png') no-repeat center center; background-size: 35% ;   opacity:${item.active ? '1' : '0.5'} ; border-bottom: ${item.active ? '0.08rem #f2f6fb solid;' : '0'} `
+      }
     }
+  },
+  watch: {
+    mapMod(newValue) {
+      this.tools = this.tools.map(t => {
+        return newValue === t.name
+          ? Object.assign(t, { active: true })
+          : Object.assign(t, { active: false })
+      })
+
+      console.log(this.tools)
+    }
+  },
+  created() {
+    this.tools = this.tools.map(t => {
+      return this.mapMod === t.name
+        ? Object.assign(t, { active: true })
+        : Object.assign(t, { active: false })
+    })
   },
   methods: {
     checkView(mod) {
       console.log('视图:' + mod)
-      this.$emit('change', mod)
+      this.$emit('update:mapMod', mod)
     }
-
   }
 }
 </script>
 
 <style lang="less" scoped>
 .map-tool {
-  width: 15rem;
-  height: 5rem;
-  background: rgba(255, 255, 255, 0.5);
+  width: 19rem;
+  height: 3.56rem;
+//  background: rgba(24, 70, 95, 0.3);
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 998;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: flex-start;
-
-  ol{
-    //box-sizing: border-box;
-    border: 1rem yellow solid;
+  //border-bottom: 0.08rem #124060 solid;
+  ol {
     cursor: pointer;
-    background: yellowgreen;
+
   }
 }
 </style>

@@ -1,13 +1,20 @@
 <template>
   <div id="app" :style="baseSize()">
+    <slide-menu :menu="screenRouter" />
     <router-view v-if="refresh" />
   </div>
 </template>
 <script>
+import SlideMenu from '@/components/slideMenu/slideMenu'
+import { SCREEN_ROUTER } from '@/utils/screenConfig'
 export default {
+  components: {
+    SlideMenu
+  },
   data() {
     return {
-      refresh: true
+      refresh: true,
+      screenRouter: SCREEN_ROUTER
     }
   },
   provide() {
