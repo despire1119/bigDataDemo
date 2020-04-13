@@ -22,7 +22,7 @@ export default {
     }
   },
   mounted() {
-    this.videoCtr = true
+    // this.videoCtr = true
   },
   methods: {
     popHandler(type) {
