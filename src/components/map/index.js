@@ -19,7 +19,7 @@ export default class Qmap {
     return this._viewMode
   }
   changeView(val) {
-    this._viewMode=val
+    this._viewMode = val
   }
   addMarker(x, y) {
     const marker = new AMap.Marker({
@@ -38,19 +38,17 @@ export default class Qmap {
     })
     trafficLayer.setMap(this.map)
   }
-  createArea(){
-  const opts = {
-      subdistrict: 1,   //返回下一级行政区
-      showbiz:false  //最后一级返回街道信息
-  }
- const district = new AMap.DistrictSearch(opts);//注意：需要使用插件同步下发功能才能这样直接使用
-  district.search('中国', function(status, result) {
-      if(status=='complete'){
-          getData(result.districtList[0]);
-        
-          
+  createArea() {
+    const opts = {
+      subdistrict: 1, // 返回下一级行政区
+      showbiz: false // 最后一级返回街道信息
+    }
+    const district = new AMap.DistrictSearch(opts)// 注意：需要使用插件同步下发功能才能这样直接使用
+    district.search('中国', function(status, result) {
+      if (status == 'complete') {
+        getData(result.districtList[0])
       }
-  })
-  console.log(district);
+    })
+    console.log(district)
   }
 }
