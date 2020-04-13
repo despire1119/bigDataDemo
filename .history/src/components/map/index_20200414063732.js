@@ -13,7 +13,7 @@ export default class Qmap {
       pitch: config.pitch,
       viewMode: config.mode
     })
-    this.searchCity = config.searchCity || '南京市'
+    this.searchCity = config.searchCity || '南京市',
     this.infoWindow = {}
   }
   set viewMode(val) {

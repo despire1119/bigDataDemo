@@ -1,7 +1,7 @@
 <template>
   <div class="map-room">
     <map-tool :map-mod.sync="viewMode" />
-    <!-- <video-cover/> -->
+    <video-cover/>
     <weather />
     <div id="container" style="height:100%;width:100%" tabindex="0" />
   </div>
@@ -10,7 +10,7 @@
 <script>
 import Gmap from './index'
 import MapTool from './mapTool'
-
+import VideoCover from './VideoCover'
 import { heatmapData } from '@/mockData/heatmapData'
 import weather from './weather'
 import { Polygon } from './config/hotar'
@@ -18,15 +18,15 @@ import { Point } from './config/point'
 export default {
   components: {
     MapTool,
-    weather
-
+    weather,
+    VideoCover
   },
   data() {
     return {
       qmap: {},
       viewMode: 'midView',
       realPoint: [],
-      infoWindow: null,
+      infor:{},
       modeList: [
         {
           mod: 'allView',
@@ -86,7 +86,6 @@ export default {
     this.init()
   },
   methods: {
-
     bind() {
       console.log(this.realPoint)
       this.realPoint.forEach(p => {
@@ -94,8 +93,9 @@ export default {
           this.pClick(p)
         })
         p.on('mouseover', () => {
-          // this.pMouseover(p)
+          this.pMouseover(p)
         })
+        p.emit('click', {target: p});
       })
     },
     pMouseover(p) {
@@ -104,15 +104,13 @@ export default {
       this.qmap.openInfo(ctx, p.De.loc[0], p.De.loc[1])
     },
     pClick(p) {
-      if (this.infoWindow) {
-        this.qmap.removeInfoWindow(this.infoWindow)
-        this.infoWindow = null
-        return
-      }
       console.log(p, '击中')
-      const { lng, lat } = p.getPosition()
-      const ctx = `<video style="z-index:99999" src="${p.De.videoUrl}" controls="controls" autoplay="autoplay" loop="loop" preload></video>`
-      this.infoWindow = this.qmap.openInfo(ctx, lng, lat)
+      // const kindStr = this.lengend.find(n => n.kind === p.Je.kind).title
+      // this.dialogInfor = {
+      //   title: `${p.Je.title}-${kindStr}`,
+      //   url: p.Je.url
+      // }
+      // this.showDialog = true
     },
     init() {
       const bass = this.modeList.find(mod => mod.mod === this.viewMode).bassConfig
@@ -153,7 +151,7 @@ export default {
             locId: `${point.loc[0]}${point.loc[1]}`,
             title: point.name,
             loc: point.loc,
-            videoUrl: point.videoUrl
+            info: point.info
           }
         )
 

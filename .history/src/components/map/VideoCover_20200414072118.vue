@@ -8,14 +8,14 @@ export default {
     value: {
       type: Boolean,
       default: false
-    }
+    },
   },
   data() {
     return {
       avalue: this.value
     }
-  }
-
+  },
+  
 }
 </script>
 

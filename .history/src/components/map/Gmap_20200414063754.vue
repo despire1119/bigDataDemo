@@ -18,7 +18,7 @@ import { Point } from './config/point'
 export default {
   components: {
     MapTool,
-    weather
+    weather,
 
   },
   data() {

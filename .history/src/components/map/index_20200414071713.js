@@ -13,8 +13,8 @@ export default class Qmap {
       pitch: config.pitch,
       viewMode: config.mode
     })
-    this.searchCity = config.searchCity || '南京市'
-    this.infoWindow = {}
+    this.searchCity = config.searchCity || '南京市',
+    this.infoWindow={}
   }
   set viewMode(val) {
     this.changeView(val)
@@ -144,7 +144,9 @@ export default class Qmap {
       })
     })
   }
+  createInfoWindow(){
 
+  }
   heatMap(data) {
     this.map.on('complete', () => {
       const layer = new Loca.HeatmapLayer({
@@ -171,15 +173,15 @@ export default class Qmap {
     })
 
     infoWindow.open(this.map, [x, y])
-    this.infoWindow = infoWindow
-    return infoWindow
+    this.infoWindow=infoWindow
+    returninfoWindow
   }
   removeInfoWindow(infoWindow) {
     infoWindow.close()
   }
   createHotArea(config, lnglat) {
     const path = []
-    for (const point of lnglat) {
+    for (const [index, point] of lnglat.entries()) {
       path.push(new AMap.LngLat(point.lng, point.lat))
     }
     const { strokeWeight, strokeColor, strokeOpacity, fillColor, fillOpacity } = config
