@@ -32,7 +32,7 @@ export default {
   width: 100rem;
   height: 10rem;
   border-radius: 1rem;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(2, 24, 38, 0.8);
   position: absolute;
   top: 0rem;
   z-index: 99999;

@@ -10,6 +10,11 @@ export const SCREEN_ROUTER = [
     path: '/CitizenTravelIndex'
   },
   {
+    title: '市民出行数据分析报告系统',
+    name: 'Report',
+    path: '/Report'
+  },
+  {
     title: '按需出行需求分析模型',
     name: 'TravelOnDemand',
     path: '/TravelOnDemand'

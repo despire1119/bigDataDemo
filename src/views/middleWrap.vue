@@ -2,24 +2,27 @@
   <div class="midScreen">
     <Title />
     <MapRander />
-    <!-- <VideoCover v-if="videoCtr" @change="popHandler" /> -->
+    <VideoCover v-if="videoCtr" @change="popHandler" />
   </div>
 </template>
 
 <script>
 import MapRander from '@/components/map/Gmap'
-// import VideoCover from '@/components/map/videoCover'
+import VideoCover from '@/components/map/videoCover'
 import Title from '@/components/common/Title'
 export default {
   components: {
     MapRander,
-    // VideoCover,
+    VideoCover,
     Title
   },
   data() {
     return {
       videoCtr: false
     }
+  },
+  mounted() {
+    this.videoCtr = true
   },
   methods: {
     popHandler(type) {
