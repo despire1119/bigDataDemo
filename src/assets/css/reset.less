@@ -25,6 +25,21 @@ body {
   // user-select: none;
 }
 
+@keyframes slideUp{
+  from{
+    transform: translate(0,85%);
+    opacity: 2;
+    transform-origin: 0 0;
+  }
+  to{
+    transform-origin: 0 0;
+    transform: translate(0,0);
+    opacity: 1;
+    
+  }
+}
+
+
 @keyframes slideDown{
   from{
     transform: translate(0,-90%);
