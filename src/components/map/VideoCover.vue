@@ -1,5 +1,5 @@
 <template>
-  <video class="video" src="@/assets/video/trafficModel.mp4" autoplay="autoplay" loop="loop" preload />
+  <video class="video" src="video/trafficModel.mp4" controls="controls" autoplay="autoplay" loop="loop" preload />
 </template>
 
 <script>
