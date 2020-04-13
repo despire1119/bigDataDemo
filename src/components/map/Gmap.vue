@@ -1,7 +1,7 @@
 <template>
-  <div class="map-room" @click="addmarker">
-    <map-tool @change="changeMapView" />
-    <!-- <map-tool></map-tool> -->
+  <div class="map-room">
+    <map-tool :map-mod.sync="viewMode" />
+    <weather />
     <div id="container" style="height:100%;width:100%" tabindex="0" />
   </div>
 </template>
@@ -10,15 +10,15 @@
 import Gmap from './index'
 import MapTool from './mapTool'
 import { heatmapData } from '@/mockData/heatmapData'
-
+import weather from './weather'
 export default {
   components: {
-    MapTool
+    MapTool, weather
   },
   data() {
     return {
       qmap: {},
-      viewMode: 'allView',
+      viewMode: 'midView',
       modeList: [
         {
           mod: 'allView',
@@ -26,7 +26,7 @@ export default {
             id: 'container',
             x: 118.792199,
             y: 32.050678,
-            zoom: 17,
+            zoom: 11,
             pitch: 65,
             mode: '2D'
           }
@@ -35,9 +35,9 @@ export default {
           mod: 'midView',
           bassConfig: {
             id: 'container',
-            x: 118.792199,
-            y: 32.050678,
-            zoom: 25,
+            x: 118.796601,
+            y: 32.058548,
+            zoom: 20,
             pitch: 65,
             mode: '3D'
           }
@@ -100,21 +100,8 @@ export default {
           break
       }
     },
-    changeMapView(type) {
-      if (type === 'video') {
-        console.log('弹窗')
-      } else {
-        this.viewMode = type
-      }
-    },
     moveTo() {
       this.qmap.moveToPoint(116.319665, 39.855919)
-    },
-    addmarker() {
-      this.qmap.addMarker(
-        106.546331 + Math.random() * 0.005,
-        29.558136 + Math.random() * 0.005
-      )
     }
   }
 }

@@ -25,12 +25,25 @@ export default class Qmap {
   changeView(val) {
     this._viewMode = val
   }
-  addMarker(x, y) {
-    const marker = new AMap.Marker({
-      position: [x, y],
-      color: 'red'
+  createIcon(imgUrl, imgSize = 27, size = 27) {
+    const vsize = new AMap.Size(imgSize, imgSize)
+    return new AMap.Icon({
+      image: imgUrl,
+      imgSize: vsize,
+      size: vsize
     })
-    this.map.add(marker)
+  }
+  addMarker(x, y, z, icon = '', config = {}) {
+    const marker = new AMap.Marker({
+      map: this.map,
+      position: [x, y],
+      showPositionPoint: true,
+      icon,
+      zIndex: z,
+      ...config
+    })
+
+    this.realpoint.push(marker)
     return marker
   }
   moveToPoint(x, y) {
@@ -68,7 +81,16 @@ export default class Qmap {
     // 地图自适应
     this.map.setFitView()
   }
-  createSubArea(area, config = { map: this.map, strokeWeight: 2, fillOpacity: 0, fillColor: '#CCF3FF', strokeColor: '#73c4fb' }) {
+  createSubArea(
+    area,
+    config = {
+      map: this.map,
+      strokeWeight: 2,
+      fillOpacity: 0,
+      fillColor: '#CCF3FF',
+      strokeColor: '#73c4fb'
+    }
+  ) {
     this.districtSearch(area, res => {
       const bounds = res.districtList[0].boundaries
       const polygons = []
@@ -93,9 +115,7 @@ export default class Qmap {
       ]
       const holes = res.districtList[0].boundaries
 
-      const pathArray = [
-        outer
-      ]
+      const pathArray = [outer]
       pathArray.push.apply(pathArray, holes)
       const polygon = new AMap.Polygon({
         pathL: pathArray,
@@ -138,5 +158,19 @@ export default class Qmap {
       })
       layer.render()
     })
+  }
+  openInfo(htmlMsg, x, y) {
+    console.log('sdfsdf')
+    const infoWindow = new AMap.InfoWindow({
+      isCustom: true, // 使用自定义窗体
+      content: htmlMsg,
+      offset: new AMap.Pixel(0, -25)
+    })
+
+    infoWindow.open(this.map, [x, y])
+    return infoWindow
+  }
+  removeInfoWindow(infoWindow) {
+    infoWindow.close()
   }
 }

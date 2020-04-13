@@ -1,7 +1,6 @@
 <template>
-  <div class="left" @click="reload">
-    1
-  </div>
+  <!-- <div class="left" @click="reload"> -->
+  <div class="left" />
 </template>
 
 <script>
