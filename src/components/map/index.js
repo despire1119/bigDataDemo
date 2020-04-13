@@ -192,4 +192,3 @@ export default class Qmap {
     this.map.add(polygon)
   }
 }
-

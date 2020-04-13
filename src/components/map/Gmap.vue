@@ -78,7 +78,6 @@ export default {
       this.bind()
     }
   },
-
   mounted() {
     this.init()
   },
@@ -100,7 +99,7 @@ export default {
       this.qmap.openInfo(ctx, p.De.loc[0], p.De.loc[1])
     },
     pClick(p) {
-      console.log(p, 'å‡»ä¸­')
+      console.log(p, '»÷ÖÐ')
       // const kindStr = this.lengend.find(n => n.kind === p.Je.kind).title
       // this.dialogInfor = {
       //   title: `${p.Je.title}-${kindStr}`,
@@ -109,14 +108,11 @@ export default {
       // this.showDialog = true
     },
     init() {
-      const bass = this.modeList.find(mod => mod.mod === this.viewMode)
-        .bassConfig
+      const bass = this.modeList.find(mod => mod.mod === this.viewMode).bassConfig
       this.qmap = new Gmap(bass)
       this.qmap.createTrafficeLine()
       this.qmap.createArea()
       this.qmap.createMask()
-      this.addHotArea()
-      this.addLight()
       this.qmap.heatMap(this.heatData)
       switch (this.viewMode) {
         case 'alllView':

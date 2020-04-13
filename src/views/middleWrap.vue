@@ -8,7 +8,7 @@
 
 <script>
 import MapRander from '@/components/map/Gmap'
-import VideoCover from '@/components/map/videoCover'
+import VideoCover from '@/components/map/VideoCover'
 import Title from '@/components/common/Title'
 export default {
   components: {
