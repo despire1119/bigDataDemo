@@ -1,6 +1,6 @@
 <template>
   <!-- <div class="left" @click="reload"> -->
-  <div class="left" />
+  <div class="left">3453445</div>
 </template>
 
 <script>
@@ -20,5 +20,9 @@ export default {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
+  font-size: 2rem;
+  text-align:  center;
+  color: #ffffff;
+
 }
 </style>

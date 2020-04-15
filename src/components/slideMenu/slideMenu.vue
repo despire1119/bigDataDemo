@@ -1,6 +1,6 @@
 <template>
   <ol class="slide-menu" :class="mouseInto ? 'mouseIn' : 'mouseOut'" @mouseover.stop="mouseoverHandle" @mouseleave.stop="mouseleaveHandle">
-    <li v-for="(m,i) in menu" :key="i" @click="checkMenu(m)"  >
+    <li v-for="(m,i) in menu" :key="i" @click="checkMenu(m)">
       <img :src="m.url" :alt="m.title" :title="m.title">
     </li>
   </ol>
@@ -21,21 +21,20 @@ export default {
   },
   watch: {
     mouseInto(newValue, oldValue) {
-      console.log('状态',newValue);
-      
+      console.log('状态', newValue)
     }
   },
   methods: {
     checkMenu(m) {
-      this.$router.push({ path: `${m.path}` })
+      this.$router.push({ path: `${m.path}`, query: { w: this.CONFIG_WIDTH, h: this.CONFIG_HEIGHT }})
     },
-    mouseoverHandle(e){
-      console.log(e.target);
-      
+    mouseoverHandle(e) {
+      console.log(e.target)
+
       this.mouseInto = true
     },
-    mouseleaveHandle(e){
-      this.mouseInto =false
+    mouseleaveHandle(e) {
+      this.mouseInto = false
     }
   }
 

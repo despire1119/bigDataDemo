@@ -1,0 +1,96 @@
+body, div, dl, dt, dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote，th,td{ padding: 0; margin: 0; }
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img {border:0;}
+address,caption, cite,code,dfn,em,strong,th,var,i,b{font-style:normal;font-weight:normal;}
+ol,ul,li {list-style:none;}
+capation,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before, q:after{content:' '}
+abbr,acronym{border:0;}
+a{text-decoration: none;}
+
+*{box-sizing: border-box;}
+html, body {
+  height: 100%;
+  -webkit-text-size-adjust:none !important;
+}
+html {
+  font-size: 100px;
+}
+body {
+  position: relative;
+  overflow: hidden;
+  // -webkit-user-select: none;
+  // -moz-user-select: none;
+  // -ms-user-select: none;
+  // user-select: none;
+}
+
+@keyframes slideUp{
+  from{
+    transform: translate(0,85%);
+    opacity:0;
+    transform-origin: 0 0;
+  }
+  to{
+    transform-origin: 0 0;
+    transform: translate(0,5%);
+    opacity: 1;
+    
+  }
+}
+
+
+@keyframes slideDown{
+  from{
+    transform: translate(0,-90%);
+    opacity: 2;
+    transform-origin: 0 0;
+  }
+  to{
+    transform-origin: 0 0;
+    transform: translate(0%,0%);
+    opacity: 1;
+    
+  }
+}
+
+
+@keyframes slideLeft{
+  from{
+    transform: scale(0,1);
+    opacity: 0;
+    transform-origin: 0 0;
+  }
+  to{
+    transform-origin: 0 0;
+    transform: scale(1,1);
+    opacity: 1;
+    
+  }
+}
+
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+// ::-webkit-scrollbar {
+//   width: 4px;
+//   height: 0.1rem;
+//   background-color: yellow;
+//   position: absolute;
+//   right: 0;
+// }
+
+// /*定义滚动条轨道 内阴影+圆角*/
+// ::-webkit-scrollbar-track {
+//   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//   border-radius: 2px;
+//   background-color:#30265e;
+// }
+
+// /*定义滑块 内阴影+圆角*/
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 2px;
+//   //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+//   background-color: #30265e;
+// }

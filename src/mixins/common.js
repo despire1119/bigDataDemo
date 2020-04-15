@@ -17,6 +17,9 @@ export default {
     },
     CONFIG_RATE() {
       return this.$store.getters.getScreenRate
+    },
+    FONT_REM_RATE() {
+      return this.$store.getters.getFontRemRate
     }
   },
   methods: {}

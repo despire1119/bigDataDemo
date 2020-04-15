@@ -3,7 +3,7 @@
     <map-tool :map-mod.sync="viewMode" />
     <!-- <video-cover/> -->
     <weather />
-    <div id="container" style="height:100%;width:100%" tabindex="0" />
+    <div id="container" style="height:100%;width:100%" tabindex="0" @click="clickHandle" />
   </div>
 </template>
 
@@ -19,7 +19,6 @@ export default {
   components: {
     MapTool,
     weather
-
   },
   data() {
     return {
@@ -45,7 +44,8 @@ export default {
             id: 'container',
             x: 118.796601,
             y: 32.058548,
-            zoom: 20,
+            zoom: 15,
+            zooms: [16, 17],
             pitch: 65,
             mode: '3D'
           }
@@ -86,7 +86,16 @@ export default {
     this.init()
   },
   methods: {
-
+    clickHandle() {
+      console.log(this.qmap.map.getZoom())
+    },
+    transRate(view) {
+      const [minZ = 16, maxZ = 18] = view.zooms
+      const [minCw, maxCw] = [1344, 22400]
+      return parseFloat(
+        (this.CONFIG_WIDTH / (22400 - 1344)) * (maxZ - minZ) + minZ
+      )
+    },
     bind() {
       console.log(this.realPoint)
       this.realPoint.forEach(p => {
@@ -115,7 +124,11 @@ export default {
       this.infoWindow = this.qmap.openInfo(ctx, lng, lat)
     },
     init() {
-      const bass = this.modeList.find(mod => mod.mod === this.viewMode).bassConfig
+      const view = this.modeList.find(mod => mod.mod === this.viewMode).bassConfig
+
+      const bass = Object.assign(view, { zoom: this.transRate(view) })
+      console.log('地图比例', bass)
+
       this.qmap = new Gmap(bass)
       this.qmap.createTrafficeLine()
       this.qmap.createArea()
@@ -141,7 +154,9 @@ export default {
       const arr = []
       Point.forEach((point, i) => {
         const icon = this.qmap.createIcon(
-          '../images/ico_map_tunnel.png', 32, 32
+          '../images/ico_map_tunnel.png',
+          32,
+          32
         )
         const real = this.qmap.addMarker(
           +point.loc[0],
@@ -173,6 +188,6 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 999;
 }
 </style>

@@ -17,16 +17,29 @@ export default {
       screenRouter: SCREEN_ROUTER
     }
   },
-  provide() {
-    return {
-      reload: this.reload
-    }
-  },
   computed: {
     baseSize() {
       return function(w = this.CONFIG_WIDTH, h = this.CONFIG_HEIGHT) {
         return `width:${w}px;height:${h}px;transform:scale(${this.CONFIG_RATE[0]},${this.CONFIG_RATE[1]})`
       }
+    }
+  },
+  watch: {
+    // $route:{
+    //   handler:function(route,old) {
+    //     if(route.fullPath === old.fullPath) return
+    //     const {w,h}=route.query
+    //     if(+w !== this.CONFIG_WIDTH || +h !==this.CONFIG_HEIGHT){
+    //       console.log("设置");
+
+    //     }
+    //   },
+    //   deep:true
+    // }
+  },
+  provide() {
+    return {
+      reload: this.reload
     }
   },
   mounted() {

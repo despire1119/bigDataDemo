@@ -10,6 +10,7 @@ export default class Qmap {
       resizeEnable: true,
       mapStyle: 'amap://styles/a57117bc1404186edcb1cacc22910e4c',
       zoom: config.zoom,
+      zooms: config.zooms || [16, 17],
       pitch: config.pitch,
       viewMode: config.mode
     })
@@ -194,4 +195,9 @@ export default class Qmap {
 
     this.map.add(polygon)
   }
+  // getz(){
+  //   AMap.event.addListener(this.map,'zoomend',()=>{
+
+  //   })
+  // }
 }
