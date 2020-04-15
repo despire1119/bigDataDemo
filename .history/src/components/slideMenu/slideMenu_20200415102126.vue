@@ -47,19 +47,19 @@ export default {
   cursor: pointer;
   width: 56.33rem;
   height: 7.13rem;
-  margin-left: -28.16rem;
+//  margin-left: -28.16rem;
   position: absolute;
-  left: 50%;
+  left: 0%;
   bottom: 0rem;
   z-index: 99999;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  background-image: url('/images/menu_bg.png');
+  background-image: url('../../../public/images/menu_bg.png');
   background-size: contain;
   background-repeat: no-repeat;
-  transform: translate(0, 85%);
+  //transform: translate(0, 85%);
   transition: all 0.2s cubic-bezier(0.18, 1.1, 0.51, 1.29);
   li{
     display: flex;
@@ -76,9 +76,12 @@ export default {
       height: 3.5rem;
     }
   }
-  &:hover{
-    transform: translate(0, 10%);
-    //  animation:slideUp 0.2s linear 0s 1 forwards;
-  }
+
+}
+.mouseIn{ 
+   transform: translate(0, 0); 
+}
+.mouseOut{
+  transform: translate(0,85%);
 }
 </style>

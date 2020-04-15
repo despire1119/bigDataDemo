@@ -1,6 +1,6 @@
 <template>
-  <ol class="slide-menu" :class="mouseInto ? 'mouseIn' : 'mouseOut'" @mouseover.stop="mouseoverHandle" @mouseleave.stop="mouseleaveHandle">
-    <li v-for="(m,i) in menu" :key="i" @click="checkMenu(m)"  >
+  <ol class="slide-menu">
+    <li v-for="(m,i) in menu" :key="i" @click="checkMenu(m)">
       <img :src="m.url" :alt="m.title" :title="m.title">
     </li>
   </ol>
@@ -14,28 +14,14 @@ export default {
       default: () => []
     }
   },
-  data() {
-    return {
-      mouseInto: false
-    }
-  },
-  watch: {
-    mouseInto(newValue, oldValue) {
-      console.log('状态',newValue);
-      
-    }
-  },
+  // computed: {
+  //   style() {
+  //     return `width:${100 / this.menu.length}%;height:100%`
+  //   }
+  // },
   methods: {
     checkMenu(m) {
       this.$router.push({ path: `${m.path}` })
-    },
-    mouseoverHandle(e){
-      console.log(e.target);
-      
-      this.mouseInto = true
-    },
-    mouseleaveHandle(e){
-      this.mouseInto =false
     }
   }
 
@@ -56,7 +42,7 @@ export default {
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  background-image: url('/images/menu_bg.png');
+  background-image: url('../../../public/images/menu_bg.png');
   background-size: contain;
   background-repeat: no-repeat;
   transform: translate(0, 85%);
@@ -77,8 +63,8 @@ export default {
     }
   }
   &:hover{
-    transform: translate(0, 10%);
-    //  animation:slideUp 0.2s linear 0s 1 forwards;
+   transform: translate(0, 0);
+    //animation:slideUp 0.2s linear 0s 1 forwards;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <ol class="slide-menu" :class="mouseInto ? 'mouseIn' : 'mouseOut'" @mouseover.stop="mouseoverHandle" @mouseleave.stop="mouseleaveHandle">
+  <ol class="slide-menu" :class="mouseInto ? 'mouseIn' : 'mouseOut'" @mouseover="mouseoverHandle" @mouseleave="mouseleaveHandle">
     <li v-for="(m,i) in menu" :key="i" @click="checkMenu(m)"  >
       <img :src="m.url" :alt="m.title" :title="m.title">
     </li>
@@ -19,19 +19,11 @@ export default {
       mouseInto: false
     }
   },
-  watch: {
-    mouseInto(newValue, oldValue) {
-      console.log('状态',newValue);
-      
-    }
-  },
   methods: {
     checkMenu(m) {
       this.$router.push({ path: `${m.path}` })
     },
     mouseoverHandle(e){
-      console.log(e.target);
-      
       this.mouseInto = true
     },
     mouseleaveHandle(e){
@@ -56,7 +48,7 @@ export default {
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  background-image: url('/images/menu_bg.png');
+  background-image: url('../../../public/images/menu_bg.png');
   background-size: contain;
   background-repeat: no-repeat;
   transform: translate(0, 85%);
@@ -76,9 +68,12 @@ export default {
       height: 3.5rem;
     }
   }
-  &:hover{
-    transform: translate(0, 10%);
-    //  animation:slideUp 0.2s linear 0s 1 forwards;
-  }
+
+}
+.mouseIn{ 
+   transform: translate(0, 0); 
+}
+.mouseOut{
+  transform: translate(0,85%);
 }
 </style>
