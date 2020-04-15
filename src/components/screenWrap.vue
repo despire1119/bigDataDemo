@@ -14,7 +14,8 @@ export default {
   },
   computed: {
     screenStyle() {
-      return `width: ${this.baseW}%; height: 100%; z-index: -1;` // 哈哈没想到吧我是雷的兄弟
+      return `width: ${this.baseW}%; height: 100%;` // 哈哈没想到吧我是雷的兄弟
+      // return `width: ${this.baseW}%; height: 100%; z-index: -1;` // 哈哈没想到吧我是雷的兄弟
     }
   }
 }

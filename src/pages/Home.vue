@@ -42,6 +42,6 @@ export default {
   width: 100%;
   height: 100%;
   border: 0.6rem #001731 solid;
-  z-index: 0;
+  z-index: -1;
 }
 </style>
