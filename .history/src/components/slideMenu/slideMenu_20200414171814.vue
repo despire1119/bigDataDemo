@@ -47,10 +47,10 @@ export default {
   cursor: pointer;
   width: 56.33rem;
   height: 7.13rem;
-//  margin-left: -28.16rem;
+  margin-left: -28.16rem;
   position: absolute;
-  left: 0%;
-  bottom: 0rem;
+  left: 50%;
+  bottom: -6rem;
   z-index: 99999;
   display: flex;
   flex-flow: row nowrap;
@@ -79,9 +79,11 @@ export default {
 
 }
 .mouseIn{ 
-   transform: translate(0, 0); 
+  // transform: translate(0, 0); 
+  bottom: 0;
 }
 .mouseOut{
-  transform: translate(0,85%);
+  //transform: translate(0,85%);
+  bottom:-6rem,
 }
 </style>

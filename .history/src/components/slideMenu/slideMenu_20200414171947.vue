@@ -47,9 +47,9 @@ export default {
   cursor: pointer;
   width: 56.33rem;
   height: 7.13rem;
-//  margin-left: -28.16rem;
+  margin-left: -28.16rem;
   position: absolute;
-  left: 0%;
+  left: 50%;
   bottom: 0rem;
   z-index: 99999;
   display: flex;

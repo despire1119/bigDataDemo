@@ -1,7 +1,12 @@
 <template>
-  <ol class="slide-menu" :class="mouseInto ? 'mouseIn' : 'mouseOut'" @mouseover.stop="mouseoverHandle" @mouseleave.stop="mouseleaveHandle">
-    <li v-for="(m,i) in menu" :key="i" @click="checkMenu(m)"  >
-      <img :src="m.url" :alt="m.title" :title="m.title">
+  <ol
+    class="slide-menu"
+    :class="mouseInto ? 'mouseIn' : 'mouseOut'"
+    @mouseover.stop="mouseoverHandle"
+    @mouseleave.stop="mouseleaveHandle"
+  >
+    <li v-for="(m,i) in menu" :key="i" @click="checkMenu(m)">
+      <img :src="m.url" :alt="m.title" :title="m.title" />
     </li>
   </ol>
 </template>
@@ -16,40 +21,51 @@ export default {
   },
   data() {
     return {
-      mouseInto: false
+      mouseInto: false,
+      timeOut: 0,
+      timer: null
     }
   },
   watch: {
     mouseInto(newValue, oldValue) {
-      console.log('状态',newValue);
-      
+      console.log('状态', newValue)
     }
   },
   methods: {
     checkMenu(m) {
       this.$router.push({ path: `${m.path}` })
     },
-    mouseoverHandle(e){
-      console.log(e.target);
-      
+    mouseoverHandle(e) {
+      console.log(e.target)
+
       this.mouseInto = true
     },
-    mouseleaveHandle(e){
-      this.mouseInto =false
+    mouseleaveHandle(e) {
+      console.log("离开")      
+      this.timer = setInterval(() => {
+        this.timeOut++
+      }, 100)
+      if (this.timeOut >= 10) {
+        this.mouseInto = false
+        this.clearTimer()
+      }
+    },
+    clearTimer() {
+      clearInterval(this.timer)
+      this.timer = null
     }
   }
-
 }
 </script>
 
 <style lang="less" scoped>
-.slide-menu{
+.slide-menu {
   cursor: pointer;
   width: 56.33rem;
   height: 7.13rem;
-//  margin-left: -28.16rem;
+  margin-left: -28.16rem;
   position: absolute;
-  left: 0%;
+  left: 50%;
   bottom: 0rem;
   z-index: 99999;
   display: flex;
@@ -59,9 +75,9 @@ export default {
   background-image: url('../../../public/images/menu_bg.png');
   background-size: contain;
   background-repeat: no-repeat;
-  //transform: translate(0, 85%);
+  transform: translate(0, 85%);
   transition: all 0.2s cubic-bezier(0.18, 1.1, 0.51, 1.29);
-  li{
+  li {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,17 +87,16 @@ export default {
     width: 4rem;
     height: 4rem;
     margin: 0 1.8rem;
-    img{
+    img {
       width: auto;
       height: 3.5rem;
     }
   }
-
 }
-.mouseIn{ 
-   transform: translate(0, 0); 
+.mouseIn {
+  transform: translate(0, 0);
 }
-.mouseOut{
-  transform: translate(0,85%);
+.mouseOut {
+  transform: translate(0, 85%);
 }
 </style>
