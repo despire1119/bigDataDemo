@@ -145,7 +145,6 @@ export default class Qmap {
       })
     })
   }
-
   heatMap(data) {
     this.map.on('complete', () => {
       const layer = new Loca.HeatmapLayer({
@@ -161,6 +160,11 @@ export default class Qmap {
         }
       })
       layer.render()
+    })
+  }
+  onComplete(fun, ...args) {
+    this.map.on('complete', () => {
+      fun.apply(this, args)
     })
   }
   openInfo(htmlMsg, x, y) {

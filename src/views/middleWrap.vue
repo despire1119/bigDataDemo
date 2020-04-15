@@ -36,5 +36,6 @@ export default {
   height: 100%;
   position: relative;
   border: 0.2rem #000000 solid;
+  z-index: 0
 }
 </style>

@@ -35,11 +35,13 @@ export default {
 </script>
 <style lang="less">
 .home {
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 100%;
   height: 100%;
   border: 0.6rem #001731 solid;
+  z-index: -1;
 }
 </style>
