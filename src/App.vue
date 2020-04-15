@@ -1,7 +1,7 @@
 <template>
   <div id="app" :style="baseSize()">
-    <slide-menu :menu="screenRouter" />
     <router-view v-if="refresh" />
+    <slide-menu :menu="screenRouter" />
   </div>
 </template>
 <script>
@@ -73,5 +73,12 @@ export default {
   justify-content: flex-start;
   align-items: flex-start;
   transform-origin: 0 0;
+}
+.cover{
+  position: absolute;
+  top: 15rem;
+  left: 0;
+  right: 0;
+  background-color: #fff;
 }
 </style>
