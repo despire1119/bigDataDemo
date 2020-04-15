@@ -59,7 +59,7 @@ export default {
   background-image: url('/images/menu_bg.png');
   background-size: contain;
   background-repeat: no-repeat;
-  transform: translate(0, 85%);
+  //transform: translate(0, 85%);
   transition: all 0.2s cubic-bezier(0.18, 1.1, 0.51, 1.29);
   li{
     display: flex;
