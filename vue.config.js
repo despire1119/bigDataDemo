@@ -8,9 +8,9 @@ function resolve(dir) {
 const port = process.env.port || process.env.npm_config_port || 8080 // dev port
 
 module.exports = {
-  chainWebpack (config) { //本宝用来调试代码
-    config.optimization.minimize(false)
-  },
+  // chainWebpack(config) { // 本宝用来调试代码
+  //   config.optimization.minimize(false)
+  // },
   runtimeCompiler: true,
   // publicPath: process.env.NODE_ENV === 'production' ? '/steambuy' : './',
   publicPath: './',
@@ -32,8 +32,8 @@ module.exports = {
           ['^' + process.env.VUE_APP_BASE_API]: ''
         }
       }
-    },   
-    
+    }
+
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
